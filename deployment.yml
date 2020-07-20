@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: sampleapp
+  name: sampleapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: sampleapp
+  template:
+    metadata:
+      labels:
+        run: sampleapp
+    spec:
+      containers:
+      - image: kissyyy/sampleapp:latest
+        name: sampleapp
+--
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: sampleapp
+  name: sampleapp
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    run: sampleapp
+  type: LoadBalancer
