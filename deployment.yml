@@ -17,7 +17,7 @@ spec:
       containers:
       - image: kissyyy/sampleapp:latest
         name: sampleapp
---
+---
 apiVersion: v1
 kind: Service
 metadata:
